@@ -1,13 +1,15 @@
 NB. tabula manifest
-NB. IAC Friday 31 August 2018  20:41:09
+NB. IAC Tuesday 2 April 2019  02:16:27
 
 CAPTION=: 'TABULA - scientific calculator'
 
-VERSION=: '1.1.00'
+VERSION=: '1.2.00'
 
 FILES=: 0 : 0
 manifest.ijs
 tabula.ijs
+tabula-toolbar.png
+usertools.ijs
 )
 
 DESCRIPTION=: 0 : 0
