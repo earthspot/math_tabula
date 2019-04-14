@@ -1,54 +1,24 @@
 0 :0
-Monday 25 February 2019  02:53:57
+Saturday 13 April 2019  03:38:25
 -
 TABULA: scientific units calculator
 -simplified architecture
 )
 
-clear 'tabby'
-coclass LOC=.'tabby'
-clear LOC
+coclass 'tabby'
 coinsert 'jgl2'
+
+CREATOR=: ;(4!:4<'zx'){4!:3''[zx=.''
 onload_z_=: empty
 startonload_z_=: start_tabby_
 
-fixfont=: 3 : 0
-
-'"Menlo" 14'
-)
-FORM_POSITION=: _2
-
-
-]USERTOOLS_z_=: jpath '~Gittab/usertools.ijs'
-
-AABUILT=: '2019-02-25  05:27:47'
-AABUILT=: '2019-02-25  05:47:44'
-AABUILT=: '2019-02-25  13:04:29'
-AABUILT=: '2019-02-25  13:15:18'
-AABUILT=: '2019-02-25  13:17:37'
-AABUILT=: '2019-02-26  07:44:43'
-AABUILT=: '2019-02-26  07:59:11'
-AABUILT=: '2019-03-04  12:51:41'
-AABUILT=: '2019-03-04  13:00:57'
-AABUILT=: '2019-03-04  13:20:59'
-AABUILT=: '2019-03-04  13:22:12'
-AABUILT=: '2019-03-04  15:47:29'
-AABUILT=: '2019-03-04  15:53:43'
-AABUILT=: '2019-03-05  04:27:07'
-AABUILT=: '2019-03-05  04:53:42'
-AABUILT=: '2019-03-06  09:22:50'
-AABUILT=: '2019-03-06  09:33:08'
-AABUILT=: '2019-03-06  10:01:17'
-AABUILT=: '2019-03-06  10:02:51'
-AABUILT=: '2019-03-26  01:52:52'
-AABUILT=: '2019-03-26  02:00:02'
-AABUILT=: '2019-03-26  02:54:21'
-AABUILT=: '2019-03-26  02:57:56'
-AABUILT=: '2019-03-26  03:02:01'
-AABUILT=: '2019-03-26  04:37:08'
-AABUILT=: '2019-03-29  13:33:03'
-AABUILT=: '2019-03-30  20:15:33'
-AABUILT=: '2019-03-31  03:46:27'
+AABUILT=: '2019-04-13  05:36:46'
+AABUILT=: '2019-04-13  05:50:10'
+AABUILT=: '2019-04-13  05:55:33'
+AABUILT=: '2019-04-13  06:07:18'
+AABUILT=: '2019-04-13  06:09:37'
+AABUILT=: '2019-04-13  06:25:43'
+AABUILT=: '2019-04-13  18:21:56'
 
 '==================== [tabby] constants ===================='
 
@@ -58,9 +28,6 @@ ABOUT=: 0 : 0
 TABULA: scientific calculator
 -works with SI units.
 )
-
-sysmodifiers=: ,'0'
-
 
 
 CONTENT_UNICO=: }: 0 : 0
@@ -88,6 +55,9 @@ Help for TABULA (when getting started)…
 )
 
 BS=: '\'
+CM=: ','
+CO=: ':'
+DT=: '.'
 COLOR_HOVER=: 255 200 0
 COLOR_CLICK=: 255 100 0
 COLOR_WHITE=: 255 255 255
@@ -96,11 +66,13 @@ DESELECT=: 1
 DG=: '°'
 DIAMETER=: 25
 DQ=: '"'
+IDE=: 1
 ITEMS=: i.0
 NOCONFIRM_MAX=: 20
 PEN_WIDTH=: 3
 PMOVES=: 0
-PNG=: temp 'tabula-toolbar.png'
+QT=: ''''
+SC=: ';'
 SL=: '/'
 TABNDX=: 0
 TIMER_HOVER=: 1000
@@ -138,7 +110,7 @@ syshwndp                           =: UNSET
 syslastfocus                       =: UNSET
 syslocalec                         =: UNSET
 syslocalep                         =: UNSET
-sysmodifiers                       =: UNSET
+sysmodifiers                       =: ,'0'
 sysparent                          =: UNSET
 systype                            =: UNSET
 tabs                               =: UNSET
@@ -177,6 +149,7 @@ if. -. NSAMPLE e. i.8 do. NSAMPLE=: 0 end.
 jpgview '$',":NSAMPLE
 )
 
+createDirIfAbsent=: [: 1!:5 ::0: <
 dtlf=: #~ ([: +./\. (10{a.)&~:)
 shift=: 2 : 'if. 1=".sysmodifiers do. v y else. u y end.'
 isEmpty=: 0 = [: */ $
@@ -226,17 +199,121 @@ foo a3 ; first2nums list3
 foo a3 ; first2nums list1
 )
 
-onload 'test_numeral_i 0'
+'==================== [tabby] handy4tab ===================='
+cocurrent 'z'
 
-onload 'imgview temp ''breakback.jpg'''
-onload 'imgview temp ''toucan.jpg'''
+and=: *.
+any=: +./
+brace=: 1 |. '}{' , ":
+brack=: 1 |. '][' , ":
+cr=: [: 5!:5 boxopen
+crr=: > , '=: ' , cr
+cuT=: <;._2
+ddefine=: 1 : 'm&$: : (4 : 0)'
+
+default=: 0&$: :(4 : 0)
+
+
+
+
+
+
+if. 0<: 4!:0 <y do. y~ return. end.
+(y)=:x
+)
+
+diriac=: 0&$: :(4 : 0)
+
+
+
+
+
+sortd=. \:~ :\:
+if. y-:'?' do. sst how elseif. y-:'??' do. ot how end.
+if. 0=#y do. y=. '~temp/*.ijs' end.
+if. x<0 do. x {. sortd ~. 3 diriac y return. end.
+z=. {."1 (1!:0 jpath y)
+if. x-:0 do. z return. end.
+fo=. [: > [: {. DT cut ]
+z=. fo each z
+if. x-:1 do. z return. end.
+fprefix=. '*' -.~ ([: >: '/' i:~ ]) }. ] {.~ '.' i.~ ]
+
+n=. #fprefix y
+z=. n }. each z
+if. x-:2 do. z return. end.
+
+sort ~. ,> 0 ".each z -.each < a. -. '1234567890'
+)
+
+platform=: 3 : 0
+
+if. y-: 1 do. z=. 'IFJHS';'IFQT'
+else. z=. 'IF' nl_z_ 0
+end.
+('=:',~"1 >z),. ": vv ". ','sfy z
+)
+
+
+
+
+s=. 3 3 2$1 0 0 0 0 0 2 1 2 1 2 1 2 0 0 3 2 0
+m=. < '(' ; ')'
+smresolve=: ((0;s;m) ;: ucp)"1
+sw=: ] rplc [: , (paren&.> ,. ":&".&.>)&smresolve
+ssw=: smoutput&sw
+
+dtlf=: #~ ([: +./\. (10{a.)&~:)
+edit=: [: open [: , [: > whichscript_z_
+extx=: (0 < [: # ]) # ] , [ #~ [: -. '.' e. ]
+fname=: ([: >: '/' i:~ ]) }. ] {.~ '.' i:~ ]
+fw=: firstwords=: (' ' taketo ])"1
+ijs=: '.ijs'&extx
+isBool=: isBools *. isScalar
+isBools=: [: all 0 1 e.~ ]
+isEmpty=: 0 = [: */ $
+isScalar=: [: {. 0 = [: $ $
+tmp=: [: jpath '~temp/' , ijs@":
+lasttemp=: 3 : 'tmp >./3 diriac tmp ''*'''
+llog=: (1 { ":)@(,@([: ] ;: ,. [: ".&.> ;:))
+log=: [: ": ;: ,. [: ".&.> ;:
+max=: $:/ :>.
+min=: $:/ :<.
+o2f=: 3 : 'LF(I. y=SP)}y'
+or=: +.
+paren=: 1 |. ')(' , ":
+pathof=: ] {.~ [: >: '/' i:~ ]
+pc=: '%' ,~ [: ": [: <. 0.5 + 100 * 88350 %~ ]
+
+sl=: 4 : 0
+
+
+SL=. '/'
+if. SL={:x do. x=. }:x end.
+if. SL={.y do. x=. }.y end.
+x,SL,y
+)
+
+sllog=: smoutput@llog
+sortd=: \:~ :\:
+sq=: *: :[:
+sqrt=: %: :[:
+square=: *: :[:
+st=: [: 1!:1 [: < tmp
+sst=: smoutput@st
+temp=: lasttemp`tmp@.(*@#@])
+to=: [ + [: i. [: >: -~
+x2f=: }.@((<10{a.) ;@,. ])@([: (#~ ([: +./\. ' '&~:))&.> <"1)
 
 '==================== [tabby] forms ===================='
 0 :0
-Wednesday 6 March 2019  09:22:44
+Wednesday 10 April 2019  23:48:43
 )
 
 coclass 'tabby'
+
+
+FORM_POSITION=: _5
 
 TABU=: 0 : 0
 pc tab;pn Tabby;
@@ -474,14 +551,50 @@ end.
 wd 'pmove ',": X,Y,W,H
 )
 
+
+tab_open=: 3 : 0
+
+window_close''
+wd TABU
+wd 'psel tab'
+wd 'set g wh _1 64'
+refreshInfo''
+t=. ,:UNSET
+wd 'set func font "Menlo" 10'
+wd 'set panel font ',fixfont''
+wd 'set calco font ',fixfont''
+
+wd 'set preci items *', o2f ": i.16
+wd 'set unico items *',CONTENT_UNICO
+wd 'set panel items *',UNSET
+if. PMOVES do.
+  wd :: 0: 'pmoves ' , ":XYWH
+else.
+  form FORM_POSITION
+end.
+wd 'pshow'
+fill_tools ''
+)
+
 '==================== [tabby] graphic ===================='
 0 :0
-Sunday 31 March 2019  00:45:26
+Thursday 4 April 2019  09:11:06
 -
-wd'psel tre; qform'
+TO DO
+circle - draw it round item number
+animate a mouseclick
+draw a selection bar
+fetch boxed array of current t-table, plus arrows
+add scrollbar, displace the image
+write caption
+draw arrows
+(CENTER not used)
 -
-NODES -a list of points at which {1} {2} … drawn
-tre-draw should draw the quantities & names
+  wd'psel tre; qform'
+  sminfo_z_=: wdinfo_z_=: echo_z_
+-
+PTS -a list of points at which {1} {2} … drawn
+redraw should draw the quantities & names
 click -sets the line selection
 -
 We need a scrollbar
@@ -490,10 +603,23 @@ Change arrow color when hovering in its col.
 Draw orange-circle around the line number {1} {2} …
 click to change the line number itself.
 tre_hover_off -should redraw without the orange circle.
-Click on value -superimpose a roving field to change it.
+Click on value -superimpose a roving edit to change it.
+Allow multi selections
+Move selection OR line up/down with toolbar and arrows
+Allow drag'n'drop.
+Write out a pdf of screen
 )
 
-coclass 'tabby'
+clear 'tree'
+coclass LOC=.'tree'
+clear LOC
+coinsert 'jgl2'
+
+ITEMS=: 1 + i.5
+PTS=: 100j50 100j100 100j150 100j200 100j250
+
+NODEID=: 1
+NODE=: ''
 
 TREEPOS=: 1380 500 530 550
 
@@ -503,20 +629,33 @@ cc g isidraw;
 cc sbar static; cn "(status unset)";
 )
 
-tre_close=: 3 : 'wd :: 0: ''psel tre; pclose;'''
+window_close=: 3 : 'wd :: 0: ''psel tre; pclose;'''
 
-tre_open=: 3 : 0
+start=: 3 : 0
 
-tre_close''
+TIMER_HOVER=: 1000
+PEN_WIDTH=: 3
+COLOR_HOVER=: 255 200 0
+COLOR_CLICK=: 255 100 0
+COLOR_WHITE=: 255 255 255
+MAX_DISTANCE=: 15
+MAX_DISTANCE=: 100
+FONT=: 'Menlo'
+'FONTSIZE GCOUNT GWIDTH GDROP DIAMETER CENTER DISP'=: 14 24 20 18 36 6j12 _12j_7
+sysevent=: ''
+window_close''
 wd TREE
 wd 'pmove ',": TREEPOS
 wd 'pshow'
+icp=: _1
 redraw''
 )
 
-tre_sbar=: 3 : 0
+putsb=: 3 : 0
 
-wd 'psel tre; set sbar text *',":,y
+z=. ": ,y
+if. 70<#z do. z=. '…',~ 69{.z end.
+wd 'psel tre; set sbar text *',z
 )
 
 circle=: 4 : 0
@@ -525,11 +664,13 @@ clicked=. x
 ring=. clicked pick COLOR_HOVER ; COLOR_CLICK
 glsel 'g'
 glpen PEN_WIDTH [glrgb ring
-xy=. y
+xy=. +.y
 wh=. 2#DIAMETER
 radius=. <.DIAMETER%2
 glellipse (xy - radius) , wh
 )
+tre_close=: window_close
+
 tre_g_mbldown=: 3 : 0
 
 
@@ -539,45 +680,86 @@ tre_g_mbldown=: 3 : 0
 
 tre_g_mblup=: 3 : 0
 
-
-if. -. NODEID e. i.32 do.
-  smoutput '>>> tre_g_mblup: BAD NODEID: ',":NODEID
-  return.
-end.
 NODE=: 'CLICKED',":NODEID
 	ssw '+++ tre_g_mblup y=(y) NODEID=(NODEID) NODE=(NODE)'
 )
 
-tre_g_mmove=: 3 : 0
-n=. 16
-h=. w=. 32
-'X Y'=. 2{.".sysdata
-z=. n* Y>h
-NODEID=: 32 <. z + <.X%w
-redraw NODEID
+tre_g_mmove=: hover
 
-sys_timer_z_=: tre_hover_off_tabby_
+hover=: 3 : 0
+'X Y'=: 2{.".sysdata
+PT=: X j. Y
+icp=: closest pjmouse''
+if. _=icp do. signal '(no tool selected)' return. end.
+signal 2 pick icp{CNB
+redraw icp
+
+sys_timer_z_=: hover_off_nut_
 wd'timer ',":TIMER_HOVER
 )
 
+signal=: empty
+
 tre_hover_off=: 3 : 0
 wd 'timer 0'
-	ssw '+++ tre_hover_off y=(y)'
+	ssw '+++ tre_hover_off: X=(X) Y=(Y)'
+)
+
+closest=: 3 : 0
+
+z=. |PTS-y
+ld=. <./z
+if. ld>MAX_DISTANCE do. _ return. end.
+i=. z i. ld
+)
+
+
+sysndata=:   3 : 'y{ 12{. 0&".sysdata' "0
+ptmouse=: sysndata bind 0 1
+pjmouse=: 3 : 'j./ ptmouse y'
+formxy=:  sysndata bind 2 3
+bnleft=:  sysndata bind 4
+bnmid=:   sysndata bind 5
+dnctrl=:  sysndata bind 6
+dnshift=: sysndata bind 7
+
+
+
+bnright=: sysndata bind 8
+
+nwheel=:  sysndata bind 11
+
+clickleft=: 3 : 0
+Handler 'clickleft'
+icp=: closest pjmouse''
+if. _=icp do. signal '(no tool selected)' return. end.
+i.0 0
 )
 
 redraw=: 0 ddefine
 
 
-tre_sbar sw 'x=(x) y=(y) X=(X) Y=(Y) NODEID=(NODEID) NODE=(NODE)'
+CTB=: tabengine_cal_'CTBB'
+putsb sw 'x=(x) y=(y) X=(X) Y=(Y) PT=(PT) icp=(icp) NODEID=(NODEID) NODE=(NODE)'
 wd 'psel tre'
-glclear''
+blank=. COLOR_WHITE
+spot=. x pick COLOR_HOVER ; COLOR_CLICK
 glsel 'g'
-x circle 336 16
+glclear''
+if. icp e. ITEMS-1 do. x circle icp{PTS end.
+glfont sw '"(FONT)" (FONTSIZE)'
+glrgb blank
+glpen 1
+glbrush'' [glrgb spot
+for_i. i.#PTS do.
+  gltextxy +. DISP + i{PTS
+  gltext brace i+1
+end.
 glpaint''
 )
 
 
-onload 'tre_open NIL'
+onload 'start_tree_ NIL'
 
 '==================== [tabby] tools ===================='
 
@@ -621,12 +803,12 @@ TOOLHINT=: >cutopen 0 : 0
 
 '==================== [tabby] calco ===================='
 0 :0
-Saturday 30 March 2019  20:22:29
+Wednesday 10 April 2019  23:49:45
 -
 replaces interpretCalco
 old interpretCalco --> interpretCalco0
 -
-We need an extended isNumeric which accepts blind decimals and sci#s
+  sminfo_z_=: wdinfo_z_=: echo_z_
 )
 
 coclass 'tabby'
@@ -649,9 +831,9 @@ promote 'calco_singlet'
 promote 'calco_yesno'
 promote 'calco_title'
 promote 'calco_sample'
+demote 'calco_eval'
 ]z=. (; d,each <' ::'),'calcoErr'
 daisychain=: 13 : ('(',z,')y')
-smoutput crr'daisychain'
 i.0 0
 )
 
@@ -674,7 +856,13 @@ promote=: 3 : 0
 d=: ~. d ,~ boxopen y
 )
 
+demote=: 3 : 0
+
+d=: ~. d , boxopen y
+)
+
 calcoErr=: 3 : 0
+register'calcoErr'
 msg '>>> calcoErr: none chime: y=[(y)]'
 sw'(y) [???]'
 )
@@ -730,6 +918,16 @@ blink'white'
 assert. -. noSelection''
 assert. isNumeric y
 tabenginex 'valu' ; theItem ; ". j4sci y
+)
+
+calco_eval=: 3 : 0
+register'calco_eval'
+
+blink'white'
+y=. y rplc '4π' ; ' PI4 ' ; '2π' ; ' PI2 ' ; 'π' ; ' PI '
+assert. -. noSelection''
+assert. isNum z=. rat {. ". y
+tabenginex 'valu' ; theItem ; z
 )
 
 calco_force=: 3 : 0
@@ -867,13 +1065,19 @@ doinloc=: 4 : 0
 lo=. <":x
 putsb ,>do__lo y
 )
+
 calco_qty=: 3 : 0
 register'calco_qty'
 
+
 blink'white'
 assert. -. noSelection''
+assert. SP e. y=. deb y
+'va un'=. SP cut y
+assert. isNumeric va=. dltb va
+assert. isunits=. 0~: {: tabengine 'CONV' ; dltb un
 qty=. tabengine 'UUUU' ; y
-smoutput llog 'calco_qty y qty'
+smoutput llog 'calco_qty y va un isunits qty'
 tabenginex 'vunn' ; theItem ; qty
 )
 
@@ -911,16 +1115,33 @@ open 'math/tabula'
 ===Templates for handlers:
 additems_like	>0 selected lines, ignores shift
 set1u_like	1 selected line, restores selection
-add1u_like	set1u_like but puts v=1 in CAL instruction
 child_like	set1u_like but ignores shift
 subitems_like	2 selected lines, order significant
 )
 
 coclass 'tabby'
 
+selected=: 3 : 0
+
+b=. y= # 0-.~ ".panel_select
+if. -.b do. confirm sw '>>> must select precisely (y) line',(1<{.y)#'s'
+else. confirm ''
+end.
+b return.
+)
+
+selectedAtLeast=: 3 : 0
+
+b=. y<: # 0-.~ ".panel_select
+if. -.b do. confirm sw '>>> must select (y) or more lines'
+else. confirm ''
+end.
+b return.
+)
 
 child_like=: 4 : 0
 
+if. -.selected 1 do. return. end.
 tabengine x ; theItem=. line 0
 confirm tabengine'MSSG'
 showTtable''
@@ -1229,6 +1450,7 @@ tabenginex pickshift 2$ ;:x
 
 additems=: additems_like=: 'plus' ddefine
 
+if. -.selectedAtLeast 1 do. return. end.
 tabengine x ; panel_select
 confirm tabengine'MSSG'
 showTtable''
@@ -1241,6 +1463,7 @@ mulitems=: 'mult'&additems_like
 
 subitems=: subitems_like=: 'minu' ddefine
 
+if. -.selected 2 do. return. end.
 if. heldshift'' do. tabengine x ; line 1 0
 else.               tabengine x ; line 0 1
 end.
@@ -1293,7 +1516,7 @@ updatevaluebar''
 restoreFocusToInputField''
 )
 
-equal=: 'equl'&additems_like
+equal=: 'equl'&child_like
 delit=: 'dele'&additems_like
 
 delsa=: 3 : 0
@@ -1333,6 +1556,7 @@ siunt=: 'cvsi'&child_like
 
 set1u=: set1u_like=: 'onep onen' ddefine
 
+if. -.selected 1 do. return. end.
 inst=. pickshift 2$ ;:x
 tabengine inst ; theItem=. line 0
 confirm tabengine'MSSG'
@@ -1579,30 +1803,6 @@ panel_select=: SP ,~ ":theItem
 wd 'psel tab; set panel select ',":theItem
 )
 
-tab_open=: 3 : 0
-
-window_close''
-wd TABU
-wd 'psel tab'
-wd 'set g wh _1 64'
-refreshInfo''
-t=. ,:UNSET
-wd 'set func font "Menlo" 10'
-wd 'set panel font ',fixfont''
-wd 'set calco font ',fixfont''
-
-wd 'set preci items *', o2f ": i.16
-wd 'set unico items *',CONTENT_UNICO
-wd 'set panel items *',UNSET
-if. PMOVES do.
-  wd :: 0: 'pmoves ' , ":XYWH
-else.
-  form FORM_POSITION
-end.
-wd 'pshow'
-fill_tools ''
-)
-
 window_close=: 3 : 0
 wd :: 0: 'psel tab; pclose;'
 )
@@ -1640,7 +1840,9 @@ ssw '>>> set_ucase: dummy placeholder, y=(y)'
 
 putsb=: 3 : 0
 
-wd 'psel tab; set sbar text *',":,y
+z=. ": ,y
+if. 70<#z do. z=. '…',~ 69{.z end.
+wd 'psel tab; set sbar text *',z
 )
 
 clicktab=: 3 : 0
@@ -1716,8 +1918,15 @@ decrementToZero=: 0 >. [: <: default
 isErrorMessage=: [: +./ '>>>' E. ,
 
 confirm=: 3 : 0
+
+
+
+
 NOCONFIRM=: decrementToZero'NOCONFIRM'
-if. isErrorMessage y do.
+if. 0=#y do.
+  putsb ''
+  NOCONFIRM=: 0
+elseif. isErrorMessage y do.
   wd'beep'
   putsb y
   NOCONFIRM=: NOCONFIRM_MAX
@@ -2003,17 +2212,16 @@ else.
   msg=: empty
   sllog=: empty
 end.
-smoutput '+++ trace ',":y
 i.0 0
 )
 
 '==================== [tabby] user.ijs ===================='
 0 :0
-Friday 15 February 2019  19:40:30
+Wednesday 10 April 2019  23:57:49
 -
 THIS IS THE DEFAULT DEFN OF USERTOOLS RESIDING IN /source/
 IT IS OVERRIDDEN BY AN ALTERNATIVE SCRIPT loaded by: start
-USERTOOLS_z_ path specified in: header.ijs
+USERTOOLS is a path global created by: start
 )
 
 coclass 'tabby'
@@ -2021,7 +2229,7 @@ coclass 'tabby'
 usertool=: 3 : 0
 
 ssw '+++ usertool: sysmodifiers=(sysmodifiers)'
-if. heldshift'' do. open USERTOOLS_z_ return. end.
+if. heldshift'' do. open :: 0: USERTOOLS return. end.
 if. heldcmnd'' do. ide 1 return. end.
 )
 
@@ -2120,17 +2328,28 @@ heldshiftalt=:	3 : '5=".sysmodifiers'
 
 cocurrent 'tabby'
 
+VERSION=: '0.0.0'
+
 start=: 3 : 0
 trace 0
 wd 'timer 0'
-load :: 0: USERTOOLS_z_
-load 'math/cal'
 
+try.	load (pathof CREATOR) sl 'tpathdev.ijs'
+catch.	load (pathof CREATOR) sl 'tpath.ijs'
+end.
+load TPMT sl 'manifest.ijs'
+
+erase'CAPTION FILES DESCRIPTION RELEASE FOLDER LABCATEGORY PLATFORMS'
+
+load TPCA sl 'cal.ijs'
+
+load :: 0: TPAT sl 'patch.ijs'
+load :: 0: USERTOOLS=: TPUT sl 'usertools.ijs'
 tabengine=: tabengine_cal_
 tx_z_=: tabenginex_tabby_
 
 start_cal_ '$$'
-NB. tre_open''
+PNG=: TPNG sl 'tabula-toolbar.png'
 tab_open''
 setpreci 3
 setunico 1

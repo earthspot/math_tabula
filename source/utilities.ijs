@@ -29,6 +29,7 @@ if. -. NSAMPLE e. i.8 do. NSAMPLE=: 0 end.
 jpgview '$',":NSAMPLE
 )
 
+createDirIfAbsent=: [: 1!:5 ::0: <
 dtlf=: #~ ([: +./\. (10{a.)&~:)  NB. delete trailing LF's
 shift=: 2 : 'if. 1=".sysmodifiers do. v y else. u y end.'
 isEmpty=: 0 = [: */ $
@@ -89,7 +90,6 @@ foo a3 ; first2nums list3
 foo a3 ; first2nums list1
 )
 
-onload 'test_numeral_i 0'
-
-onload 'imgview temp ''breakback.jpg'''
-onload 'imgview temp ''toucan.jpg'''
+NB. onload 'test_numeral_i 0'
+NB. onload 'imgview temp ''breakback.jpg'''
+NB. onload 'imgview temp ''toucan.jpg'''

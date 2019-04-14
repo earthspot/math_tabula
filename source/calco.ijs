@@ -1,12 +1,12 @@
 	NB. tabby - calco.ijs
 '==================== [tabby] calco ===================='
 0 :0
-Saturday 30 March 2019  20:22:29
+Wednesday 10 April 2019  23:49:45
 -
 replaces interpretCalco
 old interpretCalco --> interpretCalco0
 -
-We need an extended isNumeric which accepts blind decimals and sci#s
+  sminfo_z_=: wdinfo_z_=: echo_z_
 )
 
 coclass 'tabby'
@@ -30,9 +30,10 @@ promote 'calco_singlet'
 promote 'calco_yesno'
 promote 'calco_title'
 promote 'calco_sample'
+demote 'calco_eval'
 ]z=. (; d,each <' ::'),'calcoErr'
 daisychain=: 13 : ('(',z,')y')
-smoutput crr'daisychain'
+NB. smoutput crr'daisychain'
 i.0 0
 )
 
@@ -51,11 +52,17 @@ z return.
 noSelection=: 3 : 'theItem<0'
 
 promote=: 3 : 0
-  NB. assume y is an element of global: z
+  NB. assume y is an element of global: d
 d=: ~. d ,~ boxopen y
 )
 
+demote=: 3 : 0
+  NB. assume y is an element of global: d
+d=: ~. d , boxopen y
+)
+
 calcoErr=: 3 : 0
+register'calcoErr'
 msg '>>> calcoErr: none chime: y=[(y)]'
 sw'(y) [???]'
 )
@@ -97,7 +104,7 @@ d+(m%60)+s%3600
 )
 
 cut_dms=: 3 : 0
-  NB. cut eg: '57° 17'' 44"' --> 57;17;44
+  NB. cut eg: 57° 17' 44" --> 57;17;44
 z=. y -. SP,DQ
 d=. ". DG taketo z
 z=. DG takeafter z
@@ -113,6 +120,16 @@ blink'white'
 assert. -. noSelection''
 assert. isNumeric y  NB. the most general
 tabenginex 'valu' ; theItem ; ". j4sci y
+)
+
+calco_eval=: 3 : 0
+register'calco_eval'
+  NB. handle a valid J-phrase to compute a new value
+blink'white'
+y=. y rplc '4π' ; ' PI4 ' ; '2π' ; ' PI2 ' ; 'π' ; ' PI '
+assert. -. noSelection''
+assert. isNum z=. rat {. ". y  NB. the most general
+tabenginex 'valu' ; theItem ; z
 )
 
 calco_force=: 3 : 0
@@ -253,22 +270,25 @@ lo=. <":x
 putsb ,>do__lo y
 )
 
-NB. REWRITE to reject non-quantities…
-
 calco_qty=: 3 : 0
 register'calco_qty'
   NB. handle a "qty" -- a valid number followed by units
+  NB. REWRITE to reject non-quantities…
 blink'white'
 assert. -. noSelection''
+assert. SP e. y=. deb y
+'va un'=. SP cut y
+assert. isNumeric va=. dltb va
+assert. isunits=. 0~: {: tabengine 'CONV' ; dltb un
 qty=. tabengine 'UUUU' ; y
-smoutput llog 'calco_qty y qty'
+smoutput llog 'calco_qty y va un isunits qty'
 tabenginex 'vunn' ; theItem ; qty
 )
 
 calco_sample=: 3 : 0
 register'calco_sample'
 blink'white'
-  NB. Act on miscellaneous forms of y
+  NB. Act on forms of y representing SAMPLE*
 if. '$$'-:y do. openss'' return.
 elseif. (y-:,'$') do. openss'$' return.
 end.
