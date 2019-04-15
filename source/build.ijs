@@ -1,20 +1,24 @@
-NB. tabula - build
+NB. math_tabula repo - build
 0 :0
-Monday 3 September 2018  00:45:57
+Monday 15 April 2019  04:41:32
 -
 open BUILTFILE
 )
 
+NB.==================================
+GIT=. '~Gitrtab'  NB. for JAL release
+NB.==================================
+
 NB. TO LOAD JUST THIS BUILTFILE:	fn⌘F9
 NB. DITTO THEN RUN:		fnF9
 
-smoutput '--- TABBY build: started'
+smoutput '--- Build: started for: ',GIT
 
 date_z_=: 6!:0 bind 'YYYY-MM-DD  hh:mm:ss'
 
 NOW=: date''
-HEADERFILE_z_=: '~Gittab/source/header.ijs'
-BUILTFILE_z_=: 1!:1 <jpath'~Gittab/builtfile'	NB. '~Gittab/tabula.ijs'
+HEADERFILE_z_=: GIT,'/source/header.ijs'
+BUILTFILE_z_=: 1!:1 <jpath GIT,'/builtfile'
 
 RB=: ')'
 
@@ -22,6 +26,6 @@ RB=: ')'
 HEADERFILE fappend~ LF,'AABUILT=: ',quote NOW
 
   NB. build BUILTFILE
-writesourcex_jp_ '~Gittab/source';BUILTFILE
+writesourcex_jp_ (GIT,'/source');BUILTFILE
 
-smoutput '--- TABBY build: completed'
+smoutput '--- Build: completed for: ',GIT
