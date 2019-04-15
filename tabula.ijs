@@ -25,6 +25,7 @@ AABUILT=: '2019-04-15  04:51:48'
 AABUILT=: '2019-04-15  04:55:38'
 AABUILT=: '2019-04-15  04:57:42'
 AABUILT=: '2019-04-15  05:23:08'
+AABUILT=: '2019-04-15  18:55:14'
 
 '==================== [tabby] constants ===================='
 
@@ -125,85 +126,6 @@ unico                              =: UNSET
 unico_select                       =: '_1'
 xunit                              =: UNSET
 xunit_select                       =: '_1'
-
-'==================== [tabby] utilities ===================='
-
-cocurrent 'tabby'
-
-imgview=: 3 : 0
-
-
-wd :: 0: 'psel form; pclose'
-a=: readimg_jqtide_ nom=. y
-wd 'pc form closeok; pn ',nom
-wd 'cc g isidraw'
-wd 'set g minwh ', ":(|.$a)
-wd 'pshow'
-glsel 'g'
-glpixels 0 0 , (|.$a), ,a
-)
-
-jpgview=: 3 : 0
-z=. jpath '~Resources/',y,'.jpg'
-imgview z
-)
-
-sampleview=: 3 : 0
-
-NSAMPLE=: >: _1 default 'NSAMPLE'
-if. -. NSAMPLE e. i.8 do. NSAMPLE=: 0 end.
-jpgview '$',":NSAMPLE
-)
-
-createDirIfAbsent=: [: 1!:5 ::0: <
-dtlf=: #~ ([: +./\. (10{a.)&~:)
-shift=: 2 : 'if. 1=".sysmodifiers do. v y else. u y end.'
-isEmpty=: 0 = [: */ $
-isNaN=: 128!:5
-isNumericJ=: (3 : '-.any isNaN _.". y') :: 0:
-numeral_i=: ([ ([ { [: (([: -. isNaN) # ]) ]) _. ". [: ": ]) :: _:
-
-n0=: firstnum=: 0&numeral_i
-secondnum=: 1&numeral_i
-first2nums=: 0 1&numeral_i
-
-test_numeral_i=: 3 : 0
-
-DN=. _
-list0=: '_55.12 66 77'
-list1=: '_55.12 xx 66 77'
-list2=: 'xx _55.12 66 77'
-list3=: 'xx _55.12 xx 66 77'
-a0=: _55.12 [a1=: 66 [a2=: 77 [a3=: _55.12 66
-foo=. assert&(-:/)
-foo a0 ; 0 numeral_i list1
-foo 66 ; 1 numeral_i list1
-foo 77 ; 2 numeral_i list1
-foo DN ; 3 numeral_i list1
-foo DN ; 4 numeral_i list1
-foo DN ; 5 numeral_i list1
-foo DN ; 99 numeral_i list1
-foo a0 ; firstnum ".list0
-foo a1 ; secondnum ".list0
-foo a0 ; firstnum list0
-foo a1 ; secondnum list0
-foo a0 ; firstnum list2
-foo a1 ; secondnum list2
-foo a0 ; firstnum list1
-foo a1 ; secondnum list1
-foo a3 ; first2nums list3
-foo a3 ; first2nums list1
-foo 1  ; firstnum ,'1'
-foo 1  ; firstnum '1'
-foo DN ; firstnum 'x'
-foo DN ; firstnum 'xx'
-foo DN ; firstnum ''
-foo DN ; secondnum ''
-foo DN ; secondnum '1'
-foo DN ; secondnum '_55.12 xx'
-foo a3 ; first2nums list3
-foo a3 ; first2nums list1
-)
 
 '==================== [tabby] handy4tab ===================='
 cocurrent 'z'
@@ -310,6 +232,85 @@ sst=: smoutput@st
 temp=: lasttemp`tmp@.(*@#@])
 to=: [ + [: i. [: >: -~
 x2f=: }.@((<10{a.) ;@,. ])@([: (#~ ([: +./\. ' '&~:))&.> <"1)
+
+'==================== [tabby] utilities ===================='
+
+cocurrent 'tabby'
+
+imgview=: 3 : 0
+
+
+wd :: 0: 'psel form; pclose'
+a=: readimg_jqtide_ nom=. y
+wd 'pc form closeok; pn ',nom
+wd 'cc g isidraw'
+wd 'set g minwh ', ":(|.$a)
+wd 'pshow'
+glsel 'g'
+glpixels 0 0 , (|.$a), ,a
+)
+
+jpgview=: 3 : 0
+z=. jpath '~Resources/',y,'.jpg'
+imgview z
+)
+
+sampleview=: 3 : 0
+
+NSAMPLE=: >: _1 default 'NSAMPLE'
+if. -. NSAMPLE e. i.8 do. NSAMPLE=: 0 end.
+jpgview '$',":NSAMPLE
+)
+
+createDirIfAbsent=: [: 1!:5 ::0: <
+dtlf=: #~ ([: +./\. (10{a.)&~:)
+shift=: 2 : 'if. 1=".sysmodifiers do. v y else. u y end.'
+isEmpty=: 0 = [: */ $
+isNaN=: 128!:5
+isNumericJ=: (3 : '-.any isNaN _.". y') :: 0:
+numeral_i=: ([ ([ { [: (([: -. isNaN) # ]) ]) _. ". [: ": ]) :: _:
+
+n0=: firstnum=: 0&numeral_i
+secondnum=: 1&numeral_i
+first2nums=: 0 1&numeral_i
+
+test_numeral_i=: 3 : 0
+
+DN=. _
+list0=: '_55.12 66 77'
+list1=: '_55.12 xx 66 77'
+list2=: 'xx _55.12 66 77'
+list3=: 'xx _55.12 xx 66 77'
+a0=: _55.12 [a1=: 66 [a2=: 77 [a3=: _55.12 66
+foo=. assert&(-:/)
+foo a0 ; 0 numeral_i list1
+foo 66 ; 1 numeral_i list1
+foo 77 ; 2 numeral_i list1
+foo DN ; 3 numeral_i list1
+foo DN ; 4 numeral_i list1
+foo DN ; 5 numeral_i list1
+foo DN ; 99 numeral_i list1
+foo a0 ; firstnum ".list0
+foo a1 ; secondnum ".list0
+foo a0 ; firstnum list0
+foo a1 ; secondnum list0
+foo a0 ; firstnum list2
+foo a1 ; secondnum list2
+foo a0 ; firstnum list1
+foo a1 ; secondnum list1
+foo a3 ; first2nums list3
+foo a3 ; first2nums list1
+foo 1  ; firstnum ,'1'
+foo 1  ; firstnum '1'
+foo DN ; firstnum 'x'
+foo DN ; firstnum 'xx'
+foo DN ; firstnum ''
+foo DN ; secondnum ''
+foo DN ; secondnum '1'
+foo DN ; secondnum '_55.12 xx'
+foo a3 ; first2nums list3
+foo a3 ; first2nums list1
+)
 
 '==================== [tabby] forms ===================='
 0 :0
@@ -832,13 +833,13 @@ VEX=: y
 make_daisychain=: 3 : 0
 
 
-d=: 'calco_' nl 3
+daisies=: 'calco_' nl 3
 promote 'calco_singlet'
 promote 'calco_yesno'
 promote 'calco_title'
 promote 'calco_sample'
 demote 'calco_eval'
-]z=. (; d,each <' ::'),'calcoErr'
+]z=. (; daisies,each <' ::'),'calcoErr'
 daisychain=: 13 : ('(',z,')y')
 i.0 0
 )
@@ -849,27 +850,34 @@ if. 0=#y do. y=. dltb calco else. y=. dltb y end.
 blink 0
 VEX=: '<UNSET>'
 theUnit=: >tabengine 'UNIT' ; theItem=: line 0
-msg '+++ interpretCalco: theItem=(theItem) theUnit=(theUnit) y=[(y)]'
+msg LF,'+++ interpretCalco: theItem=(theItem) theUnit=(theUnit) y=[(y)]'
 z=. daisychain y
-msg '--- interpretCalco: EXITS, VEX=(VEX)'
+msg '--- interpretCalco: EXITS, VEX=(VEX) z=[(swready z)]',LF
 z return.
+)
+
+swready=: 3 : 0
+
+
+crex y
 )
 
 noSelection=: 3 : 'theItem<0'
 
 promote=: 3 : 0
 
-d=: ~. d ,~ boxopen y
+daisies=: ~. daisies ,~ boxopen y
 )
 
 demote=: 3 : 0
 
-d=: ~. d , boxopen y
+daisies=: ~. daisies , boxopen y
 )
 
 calcoErr=: 3 : 0
 register'calcoErr'
-msg '>>> calcoErr: none chime: y=[(y)]'
+msg z=. '>>> calcoErr: none chime: y=[(y)]'
+confirm sw z
 sw'(y) [???]'
 )
 
@@ -930,8 +938,9 @@ calco_eval=: 3 : 0
 register'calco_eval'
 
 blink'white'
-y=. y rplc '4π' ; ' PI4 ' ; '2π' ; ' PI2 ' ; 'π' ; ' PI '
 assert. -. noSelection''
+y=. y rplc '4π' ; ' PI4 ' ; '2π' ; ' PI2 ' ; 'π' ; ' PI '
+assert. 0<# ".y
 assert. isNum z=. rat {. ". y
 tabenginex 'valu' ; theItem ; z
 )
@@ -1062,7 +1071,7 @@ case.  CO do. 'cal' doinloc }.y
 case.  CM do. 'uu' doinloc }.y
 case.  '$'do. tabenginex }.y
 case.  '\'do. putsb ": tabengine }.y
-case. do. assert 0
+case. do. assert. 0
 end.
 )
 
@@ -1595,6 +1604,15 @@ activateTabWithId 3
 anima=: 3 : 0
 
 tabenginex pickshift ;:'trav tra0'
+)
+
+tab_calco_char=: 3 : 0
+
+select. sysdata
+case. '§' do. smoutput ' '
+case. '±' do. smoutput '--------------------------------'
+case. '¢' do. smclear''
+end.
 )
 
 '==================== [tabby] flip.ijs ===================='
