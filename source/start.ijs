@@ -3,7 +3,7 @@
 
 cocurrent 'tabby'
 
-VERSION=: '0.0.0'  NB. overridden by manifest.ijs
+VERSION=: '0.0.0'  NB. overridden by manifest.ijs *
 
 start=: 3 : 0
 trace 0
