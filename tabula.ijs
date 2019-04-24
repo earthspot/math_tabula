@@ -1,5 +1,5 @@
 0 :0
-Saturday 13 April 2019  03:38:25
+Wednesday 24 April 2019  01:32:49
 -
 TABULA: scientific units calculator
 -simplified architecture
@@ -12,20 +12,7 @@ CREATOR=: ;(4!:4<'zx'){4!:3''[zx=.''
 onload_z_=: empty
 startonload_z_=: start_tabby_
 
-AABUILT=: '2019-04-13  05:36:46'
-AABUILT=: '2019-04-13  05:50:10'
-AABUILT=: '2019-04-13  05:55:33'
-AABUILT=: '2019-04-13  06:07:18'
-AABUILT=: '2019-04-13  06:09:37'
-AABUILT=: '2019-04-13  06:25:43'
-AABUILT=: '2019-04-13  18:21:56'
-AABUILT=: '2019-04-15  04:44:52'
-AABUILT=: '2019-04-15  04:50:49'
-AABUILT=: '2019-04-15  04:51:48'
-AABUILT=: '2019-04-15  04:55:38'
-AABUILT=: '2019-04-15  04:57:42'
-AABUILT=: '2019-04-15  05:23:08'
-AABUILT=: '2019-04-15  18:55:14'
+AABUILT=: '2019-04-24  01:32:57'
 
 '==================== [tabby] constants ===================='
 
@@ -794,7 +781,7 @@ TOOLHINT=: >cutopen 0 : 0
 18 hold      Toggle Hold on {A} ⇧ Toggle Transient Hold on {A}
 19 siunt     Convert {A} to SI Units
 20 iedit     Edit name of {A} ⇧ Edit formula of {A}
-21 setv0     Set {A} to 0 ⇧ Animation Step
+21 setv0     Set {A} to 0
 22 set1u     Set {A} to 1 ⇧ Set {A} to -1
 23 add1u     Add 1 to {A} ⇧ Subtract 1 from {A}
 24 addpc     Add 1% to {A} ⇧ Subtract 1% from {A}

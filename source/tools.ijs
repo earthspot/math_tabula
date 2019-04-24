@@ -30,7 +30,7 @@ TOOLHINT=: >cutopen 0 : 0
 18 hold      Toggle Hold on {A} ⇧ Toggle Transient Hold on {A}
 19 siunt     Convert {A} to SI Units
 20 iedit     Edit name of {A} ⇧ Edit formula of {A}
-21 setv0     Set {A} to 0 ⇧ Animation Step
+21 setv0     Set {A} to 0
 22 set1u     Set {A} to 1 ⇧ Set {A} to -1
 23 add1u     Add 1 to {A} ⇧ Subtract 1 from {A}
 24 addpc     Add 1% to {A} ⇧ Subtract 1% from {A}
