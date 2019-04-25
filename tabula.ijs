@@ -18,6 +18,8 @@ AABUILT=: '2019-04-24  02:31:04'
 AABUILT=: '2019-04-24  02:34:40'
 AABUILT=: '2019-04-24  02:46:08'
 AABUILT=: '2019-04-24  23:11:32'
+AABUILT=: '2019-04-25  23:11:29'
+AABUILT=: '2019-04-25  23:12:36'
 
 '==================== [tabby] handy4tab ===================='
 cocurrent 'z'
@@ -2362,17 +2364,17 @@ start=: 3 : 0
 trace 0
 wd 'timer 0'
 
-if. fexist p=. (pathof CREATOR) sl 'tpathdev.ijs' do. load p
-else.     load (pathof CREATOR) sl 'tpathjal.ijs'
+if. fexist p=. (pathof CREATOR) sl 'tpathdev.ijs' do. loadFixed p
+else.     loadFixed (pathof CREATOR) sl 'tpathjal.ijs'
 end.
-load TPMT sl 'manifest.ijs'
+loadFixed TPMT sl 'manifest.ijs'
 
 erase'CAPTION FILES DESCRIPTION RELEASE FOLDER LABCATEGORY PLATFORMS'
 
-load TPCA sl 'cal.ijs'
+loadFixed TPCA sl 'cal.ijs'
 
-load :: 0: TPAT sl 'patch.ijs'
-load :: 0: USERTOOLS=: TPUT sl 'usertools.ijs'
+loadFixed :: 0: TPAT sl 'patch.ijs'
+loadFixed :: 0: USERTOOLS=: TPUT sl 'usertools.ijs'
 tabengine=: tabengine_cal_
 tx_z_=: tabenginex_tabby_
 
@@ -2385,5 +2387,7 @@ setSelection 1
 updatevaluebar''
 restoreFocusToInputField''
 )
+
+loadFixed=: load&dquote
 
 startonload''
