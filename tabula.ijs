@@ -13,6 +13,120 @@ onload_z_=: empty
 startonload_z_=: start_tabby_
 
 AABUILT=: '2019-04-24  01:32:57'
+AABUILT=: '2019-04-24  02:28:26'
+AABUILT=: '2019-04-24  02:31:04'
+AABUILT=: '2019-04-24  02:34:40'
+AABUILT=: '2019-04-24  02:46:08'
+AABUILT=: '2019-04-24  23:11:32'
+
+'==================== [tabby] handy4tab ===================='
+cocurrent 'z'
+
+ddefine=: 1 : 'm&$: : (4 : 0)'
+
+and=: *.
+any=: +./
+brace=: 1 |. '}{' , ":
+brack=: 1 |. '][' , ":
+cr=: [: 5!:5 boxopen
+crr=: > , '=: ' , cr
+cuT=: <;._2
+
+default=: 0&$: :(4 : 0)
+
+
+
+
+
+
+if. 0<: 4!:0 <y do. y~ return. end.
+(y)=:x
+)
+
+diriac=: 0&$: :(4 : 0)
+
+
+
+
+
+sortd=. \:~ :\:
+if. y-:'?' do. sst how elseif. y-:'??' do. ot how end.
+if. 0=#y do. y=. '~temp/*.ijs' end.
+if. x<0 do. x {. sortd ~. 3 diriac y return. end.
+z=. {."1 (1!:0 jpath y)
+if. x-:0 do. z return. end.
+fo=. [: > [: {. DT cut ]
+z=. fo each z
+if. x-:1 do. z return. end.
+fprefix=. '*' -.~ ([: >: '/' i:~ ]) }. ] {.~ '.' i.~ ]
+
+n=. #fprefix y
+z=. n }. each z
+if. x-:2 do. z return. end.
+
+sort ~. ,> 0 ".each z -.each < a. -. '1234567890'
+)
+
+f4b=: }.@((<10{a.) ;@,. ])
+
+platform=: 3 : 0
+
+if. y-: 1 do. z=. 'IFJHS';'IFQT'
+else. z=. 'IF' nl_z_ 0
+end.
+('=:',~"1 >z),. ": vv ". ','sfy z
+)
+
+
+
+
+s=. 3 3 2$1 0 0 0 0 0 2 1 2 1 2 1 2 0 0 3 2 0
+m=. < '(' ; ')'
+smresolve=: ((0;s;m) ;: ucp)"1
+sw=: ] rplc [: , (paren&.> ,. ":&".&.>)&smresolve
+ssw=: smoutput&sw
+
+dtlf=: #~ ([: +./\. (10{a.)&~:)
+edit=: [: open [: , [: > whichscript_z_
+extx=: (0 < [: # ]) # ] , [ #~ [: -. '.' e. ]
+fname=: ([: >: '/' i:~ ]) }. ] {.~ '.' i:~ ]
+fw=: firstwords=: (' ' taketo ])"1
+ijs=: '.ijs'&extx
+isBool=: isBools *. isScalar
+isBools=: [: all 0 1 e.~ ]
+isEmpty=: 0 = [: */ $
+isScalar=: [: {. 0 = [: $ $
+tmp=: [: jpath '~temp/' , ijs@":
+lasttemp=: 3 : 'tmp >./3 diriac tmp ''*'''
+llog=: (1 { ":)@(,@([: ] ;: ,. [: ".&.> ;:))
+log=: [: ": ;: ,. [: ".&.> ;:
+max=: $:/ :>.
+min=: $:/ :<.
+o2f=: 3 : 'LF(I. y=SP)}y'
+or=: +.
+paren=: 1 |. ')(' , ":
+pathof=: ] {.~ [: >: '/' i:~ ]
+pc=: '%' ,~ [: ": [: <. 0.5 + 100 * 88350 %~ ]
+
+sl=: 4 : 0
+
+
+SL=. '/'
+if. SL={:x do. x=. }:x end.
+if. SL={.y do. x=. }.y end.
+x,SL,y
+)
+
+sllog=: smoutput@llog
+sortd=: \:~ :\:
+sq=: *: :[:
+sqrt=: %: :[:
+square=: *: :[:
+st=: [: 1!:1 [: < tmp
+sst=: smoutput@st
+temp=: lasttemp`tmp@.(*@#@])
+to=: [ + [: i. [: >: -~
+x2f=: }.@((<10{a.) ;@,. ])@([: (#~ ([: +./\. ' '&~:))&.> <"1)
 
 '==================== [tabby] constants ===================='
 
@@ -113,112 +227,6 @@ unico                              =: UNSET
 unico_select                       =: '_1'
 xunit                              =: UNSET
 xunit_select                       =: '_1'
-
-'==================== [tabby] handy4tab ===================='
-cocurrent 'z'
-
-and=: *.
-any=: +./
-brace=: 1 |. '}{' , ":
-brack=: 1 |. '][' , ":
-cr=: [: 5!:5 boxopen
-crr=: > , '=: ' , cr
-cuT=: <;._2
-ddefine=: 1 : 'm&$: : (4 : 0)'
-
-default=: 0&$: :(4 : 0)
-
-
-
-
-
-
-if. 0<: 4!:0 <y do. y~ return. end.
-(y)=:x
-)
-
-diriac=: 0&$: :(4 : 0)
-
-
-
-
-
-sortd=. \:~ :\:
-if. y-:'?' do. sst how elseif. y-:'??' do. ot how end.
-if. 0=#y do. y=. '~temp/*.ijs' end.
-if. x<0 do. x {. sortd ~. 3 diriac y return. end.
-z=. {."1 (1!:0 jpath y)
-if. x-:0 do. z return. end.
-fo=. [: > [: {. DT cut ]
-z=. fo each z
-if. x-:1 do. z return. end.
-fprefix=. '*' -.~ ([: >: '/' i:~ ]) }. ] {.~ '.' i.~ ]
-
-n=. #fprefix y
-z=. n }. each z
-if. x-:2 do. z return. end.
-
-sort ~. ,> 0 ".each z -.each < a. -. '1234567890'
-)
-
-platform=: 3 : 0
-
-if. y-: 1 do. z=. 'IFJHS';'IFQT'
-else. z=. 'IF' nl_z_ 0
-end.
-('=:',~"1 >z),. ": vv ". ','sfy z
-)
-
-
-
-
-s=. 3 3 2$1 0 0 0 0 0 2 1 2 1 2 1 2 0 0 3 2 0
-m=. < '(' ; ')'
-smresolve=: ((0;s;m) ;: ucp)"1
-sw=: ] rplc [: , (paren&.> ,. ":&".&.>)&smresolve
-ssw=: smoutput&sw
-
-dtlf=: #~ ([: +./\. (10{a.)&~:)
-edit=: [: open [: , [: > whichscript_z_
-extx=: (0 < [: # ]) # ] , [ #~ [: -. '.' e. ]
-fname=: ([: >: '/' i:~ ]) }. ] {.~ '.' i:~ ]
-fw=: firstwords=: (' ' taketo ])"1
-ijs=: '.ijs'&extx
-isBool=: isBools *. isScalar
-isBools=: [: all 0 1 e.~ ]
-isEmpty=: 0 = [: */ $
-isScalar=: [: {. 0 = [: $ $
-tmp=: [: jpath '~temp/' , ijs@":
-lasttemp=: 3 : 'tmp >./3 diriac tmp ''*'''
-llog=: (1 { ":)@(,@([: ] ;: ,. [: ".&.> ;:))
-log=: [: ": ;: ,. [: ".&.> ;:
-max=: $:/ :>.
-min=: $:/ :<.
-o2f=: 3 : 'LF(I. y=SP)}y'
-or=: +.
-paren=: 1 |. ')(' , ":
-pathof=: ] {.~ [: >: '/' i:~ ]
-pc=: '%' ,~ [: ": [: <. 0.5 + 100 * 88350 %~ ]
-
-sl=: 4 : 0
-
-
-SL=. '/'
-if. SL={:x do. x=. }:x end.
-if. SL={.y do. x=. }.y end.
-x,SL,y
-)
-
-sllog=: smoutput@llog
-sortd=: \:~ :\:
-sq=: *: :[:
-sqrt=: %: :[:
-square=: *: :[:
-st=: [: 1!:1 [: < tmp
-sst=: smoutput@st
-temp=: lasttemp`tmp@.(*@#@])
-to=: [ + [: i. [: >: -~
-x2f=: }.@((<10{a.) ;@,. ])@([: (#~ ([: +./\. ' '&~:))&.> <"1)
 
 '==================== [tabby] utilities ===================='
 
@@ -858,7 +866,8 @@ daisies=: ~. daisies ,~ boxopen y
 
 demote=: 3 : 0
 
-daisies=: ~. daisies , boxopen y
+y=. boxopen y
+daisies=: ~. (daisies-.y) , y
 )
 
 calcoErr=: 3 : 0
@@ -926,10 +935,23 @@ register'calco_eval'
 
 blink'white'
 assert. -. noSelection''
-y=. y rplc '4π' ; ' PI4 ' ; '2π' ; ' PI2 ' ; 'π' ; ' PI '
+y=. y rplc '4π' ; ' PI4 ' ; '2π' ; ' PI2 ' ; 'π' ; ' PI ' ; '/' ; '%'
 assert. 0<# ".y
 assert. isNum z=. rat {. ". y
 tabenginex 'valu' ; theItem ; z
+)
+
+calco_percent=: 3 : 0
+register'calco_percent'
+
+blink'white'
+assert. -. noSelection''
+assert. '%'= {: y=. dltb y
+y=. }:y
+
+assert. 0<# ".y
+assert. isNum z=. rat {. ". y
+tabenginex 'valu' ; theItem ; z % 100
 )
 
 calco_force=: 3 : 0

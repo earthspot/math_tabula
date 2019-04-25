@@ -65,7 +65,8 @@ daisies=: ~. daisies ,~ boxopen y
 
 demote=: 3 : 0
   NB. assume y is an element of global: daisies
-daisies=: ~. daisies , boxopen y
+y=. boxopen y
+daisies=: ~. (daisies-.y) , y
 )
 
 calcoErr=: 3 : 0
@@ -135,10 +136,23 @@ register'calco_eval'
   NB. handle a valid J-phrase to compute a new value
 blink'white'
 assert. -. noSelection''
-y=. y rplc '4π' ; ' PI4 ' ; '2π' ; ' PI2 ' ; 'π' ; ' PI '
+y=. y rplc '4π' ; ' PI4 ' ; '2π' ; ' PI2 ' ; 'π' ; ' PI ' ; '/' ; '%'
 assert. 0<# ".y  NB. must evaluate to a non-trivial (list of) number(s)
 assert. isNum z=. rat {. ". y  NB. rationalize (first) number in ".y
 tabenginex 'valu' ; theItem ; z
+)
+
+calco_percent=: 3 : 0
+register'calco_percent'
+  NB. handle a percentage (value)
+blink'white'
+assert. -. noSelection''
+assert. '%'= {: y=. dltb y
+y=. }:y
+  NB. cf calco_eval from here on…
+assert. 0<# ".y  NB. must evaluate to a non-trivial (list of) number(s)
+assert. isNum z=. rat {. ". y  NB. rationalize (first) number in ".y
+tabenginex 'valu' ; theItem ; z % 100
 )
 
 calco_force=: 3 : 0

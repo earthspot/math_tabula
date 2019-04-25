@@ -2,6 +2,8 @@
 '==================== [tabby] handy4tab ===================='
 cocurrent 'z'
 
+ddefine=: 1 : 'm&$: : (4 : 0)'
+
 and=: *.
 any=: +./
 brace=: 1 |. '}{' , ":
@@ -9,7 +11,6 @@ brack=: 1 |. '][' , ":
 cr=: [: 5!:5 boxopen
 crr=: > , '=: ' , cr
 cuT=: <;._2  NB. fret is {:y (c/f Cut)
-ddefine=: 1 : 'm&$: : (4 : 0)'
 
 default=: 0&$: :(4 : 0)
 	NB. pronoun (y) created with value (x)
@@ -46,6 +47,8 @@ if. x-:2 do. z return. end.		NB. boxed suffixes corresp to '*'
  NB. x-:3 assumed henceforward ...
 sort ~. ,> 0 ".each z -.each < a. -. '1234567890'
 )
+
+f4b=: }.@((<10{a.) ;@,. ])
 
 platform=: 3 : 0
   NB. list the IF* booleans and their values
