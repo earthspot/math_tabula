@@ -1,16 +1,9 @@
 	NB. tabby - handlers.ijs
 '==================== [tabby] handlers.ijs ===================='
 0 :0
-Friday 29 March 2019  13:26:53
+Friday 26 April 2019  16:02:29
 -
-===Latest Built Files:
-open '~Gituu/uu.ijs'
-open '~Gitcal/cal.ijs'
-open '~Gitcal/source/CAL_interface.ijs'
-open '~Gittab/tabula.ijs'
-open 'math/tabula'		NB. existing release
--
-===Templates for handlers:
+-Templates for handlers:
 additems_like	>0 selected lines, ignores shift
 set1u_like	1 selected line, restores selection
 child_like	set1u_like but ignores shift

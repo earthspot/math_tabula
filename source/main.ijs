@@ -1,11 +1,7 @@
 	NB. tabby - main.ijs
 '==================== [tabby] main ===================='
 0 :0
-Friday 15 February 2019  04:10:56
--
-open '~Gitcal/source/CAL_interface.ijs'
-open '~Gituu/source/uu_interface.ijs'
-uu_interface.ijs
+Friday 26 April 2019  16:02:40
 )
 
 coclass 'tabby'

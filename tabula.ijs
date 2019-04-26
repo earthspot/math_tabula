@@ -20,6 +20,7 @@ AABUILT=: '2019-04-24  02:46:08'
 AABUILT=: '2019-04-24  23:11:32'
 AABUILT=: '2019-04-25  23:11:29'
 AABUILT=: '2019-04-25  23:12:36'
+AABUILT=: '2019-04-26  16:23:54'
 
 '==================== [tabby] handy4tab ===================='
 cocurrent 'z'
@@ -1129,16 +1130,9 @@ smoutput interpretCalco '12° 15'' 04"'
 
 '==================== [tabby] handlers.ijs ===================='
 0 :0
-Friday 29 March 2019  13:26:53
+Friday 26 April 2019  16:02:29
 -
-===Latest Built Files:
-open '~Gituu/uu.ijs'
-open '~Gitcal/cal.ijs'
-open '~Gitcal/source/CAL_interface.ijs'
-open '~Gittab/tabula.ijs'
-open 'math/tabula'
--
-===Templates for handlers:
+-Templates for handlers:
 additems_like	>0 selected lines, ignores shift
 set1u_like	1 selected line, restores selection
 child_like	set1u_like but ignores shift
@@ -1775,11 +1769,7 @@ end.
 
 '==================== [tabby] main ===================='
 0 :0
-Friday 15 February 2019  04:10:56
--
-open '~Gitcal/source/CAL_interface.ijs'
-open '~Gituu/source/uu_interface.ijs'
-uu_interface.ijs
+Friday 26 April 2019  16:02:40
 )
 
 coclass 'tabby'
