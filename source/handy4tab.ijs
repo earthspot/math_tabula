@@ -4,6 +4,14 @@ cocurrent 'z'
 
 ddefine=: 1 : 'm&$: : (4 : 0)'
 
+ide=: 3 : 0
+select. y
+  case. 0 do. wd 'ide hide' [IDE_z_=: y
+  case. 1 do. wd 'ide show' [IDE_z_=: y
+  case.   do. ide -.IDE_z_	NB. toggle status
+end.
+)
+
 and=: *.
 any=: +./
 brace=: 1 |. '}{' , ":
@@ -49,6 +57,7 @@ sort ~. ,> 0 ".each z -.each < a. -. '1234567890'
 )
 
 f4b=: }.@((<10{a.) ;@,. ])
+f4x=: }.@((<10{a.) ;@,. ])@([: (#~ ([: +./\. ' '&~:))&.> <"1)
 
 platform=: 3 : 0
   NB. list the IF* booleans and their values
@@ -88,7 +97,6 @@ min=: $:/ :<.
 o2f=: 3 : 'LF(I. y=SP)}y'
 or=: +.
 paren=: 1 |. ')(' , ":
-pathof=: ] {.~ [: >: '/' i:~ ]
 pc=: '%' ,~ [: ": [: <. 0.5 + 100 * 88350 %~ ]
 
 sl=: 4 : 0

@@ -9,8 +9,8 @@ start=: 3 : 0
 trace 0
 wd 'timer 0'
   NB. Create the TP*_z_ nouns
-if. fexist p=. (pathof CREATOR) sl 'tpathdev.ijs' do. loadFixed p
-else.     loadFixed (pathof CREATOR) sl 'tpathjal.ijs'
+if. fexist p=. PARENTDIR sl 'tpathdev.ijs' do. loadFixed p
+else.     loadFixed PARENTDIR sl 'tpathjal.ijs'
 end.
 loadFixed TPMT sl 'manifest.ijs'  NB. to get VERSION
   NB. erase unwanted globals loaded by manifest

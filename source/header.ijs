@@ -8,7 +8,7 @@ TABULA: scientific units calculator
 coclass 'tabby'
 coinsert 'jgl2'	NB. uses gl2 verbs to display the toolbar
 
-CREATOR=: ;(4!:4<'zx'){4!:3''[zx=.''
+PARENTDIR=: (zx i:'/'){.zx=.jpathsep>(4!:4<'zx'){4!:3''[zx=.''
 onload_z_=: empty
 startonload_z_=: start_tabby_	NB. or: empty
 
@@ -21,3 +21,4 @@ AABUILT=: '2019-04-24  23:11:32'
 AABUILT=: '2019-04-25  23:11:29'
 AABUILT=: '2019-04-25  23:12:36'
 AABUILT=: '2019-04-26  16:23:54'
+AABUILT=: '2019-04-29  01:04:14'

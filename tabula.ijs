@@ -8,7 +8,7 @@ TABULA: scientific units calculator
 coclass 'tabby'
 coinsert 'jgl2'
 
-CREATOR=: ;(4!:4<'zx'){4!:3''[zx=.''
+PARENTDIR=: (zx i:'/'){.zx=.jpathsep>(4!:4<'zx'){4!:3''[zx=.''
 onload_z_=: empty
 startonload_z_=: start_tabby_
 
@@ -21,11 +21,20 @@ AABUILT=: '2019-04-24  23:11:32'
 AABUILT=: '2019-04-25  23:11:29'
 AABUILT=: '2019-04-25  23:12:36'
 AABUILT=: '2019-04-26  16:23:54'
+AABUILT=: '2019-04-29  01:04:14'
 
 '==================== [tabby] handy4tab ===================='
 cocurrent 'z'
 
 ddefine=: 1 : 'm&$: : (4 : 0)'
+
+ide=: 3 : 0
+select. y
+  case. 0 do. wd 'ide hide' [IDE_z_=: y
+  case. 1 do. wd 'ide show' [IDE_z_=: y
+  case.   do. ide -.IDE_z_
+end.
+)
 
 and=: *.
 any=: +./
@@ -71,6 +80,7 @@ sort ~. ,> 0 ".each z -.each < a. -. '1234567890'
 )
 
 f4b=: }.@((<10{a.) ;@,. ])
+f4x=: }.@((<10{a.) ;@,. ])@([: (#~ ([: +./\. ' '&~:))&.> <"1)
 
 platform=: 3 : 0
 
@@ -108,7 +118,6 @@ min=: $:/ :<.
 o2f=: 3 : 'LF(I. y=SP)}y'
 or=: +.
 paren=: 1 |. ')(' , ":
-pathof=: ] {.~ [: >: '/' i:~ ]
 pc=: '%' ,~ [: ": [: <. 0.5 + 100 * 88350 %~ ]
 
 sl=: 4 : 0
@@ -1716,8 +1725,6 @@ launder=: 3 : 0
 '\/'charsub y -. CRLF
 )
 
-pathof=: ] {.~ [: >: SL i:~ ]
-
 setFormTitle=: 3 : 0
 
 flag=. (tabengine'DIRT')#brack'UNSAVED'
@@ -2354,8 +2361,8 @@ start=: 3 : 0
 trace 0
 wd 'timer 0'
 
-if. fexist p=. (pathof CREATOR) sl 'tpathdev.ijs' do. loadFixed p
-else.     loadFixed (pathof CREATOR) sl 'tpathjal.ijs'
+if. fexist p=. PARENTDIR sl 'tpathdev.ijs' do. loadFixed p
+else.     loadFixed PARENTDIR sl 'tpathjal.ijs'
 end.
 loadFixed TPMT sl 'manifest.ijs'
 
