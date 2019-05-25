@@ -304,7 +304,7 @@ assert. SP e. y=. deb y
 assert. isNumeric va=. dltb va
 assert. isunits=. 0~: {: tabengine 'CONV' ; dltb un
 qty=. tabengine 'UUUU' ; y
-smoutput llog 'calco_qty y va un isunits qty'
+sllog 'calco_qty y va un isunits qty'
 tabenginex 'vunn' ; theItem ; qty
 )
 

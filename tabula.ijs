@@ -1,9 +1,12 @@
 0 :0
-Wednesday 24 April 2019  01:32:49
+Wednesday 1 May 2019  05:24:59
 -
 TABULA: scientific units calculator
 -simplified architecture
 )
+
+require 'format/zulu'
+require 'math/uu/handy4uu'
 
 coclass 'tabby'
 coinsert 'jgl2'
@@ -12,133 +15,8 @@ PARENTDIR=: (zx i:'/'){.zx=.jpathsep>(4!:4<'zx'){4!:3''[zx=.''
 onload_z_=: empty
 startonload_z_=: start_tabby_
 
-AABUILT=: '2019-04-24  01:32:57'
-AABUILT=: '2019-04-24  02:28:26'
-AABUILT=: '2019-04-24  02:31:04'
-AABUILT=: '2019-04-24  02:34:40'
-AABUILT=: '2019-04-24  02:46:08'
-AABUILT=: '2019-04-24  23:11:32'
-AABUILT=: '2019-04-25  23:11:29'
-AABUILT=: '2019-04-25  23:12:36'
-AABUILT=: '2019-04-26  16:23:54'
-AABUILT=: '2019-04-29  01:04:14'
-
-'==================== [tabby] handy4tab ===================='
-cocurrent 'z'
-
-ddefine=: 1 : 'm&$: : (4 : 0)'
-
-ide=: 3 : 0
-select. y
-  case. 0 do. wd 'ide hide' [IDE_z_=: y
-  case. 1 do. wd 'ide show' [IDE_z_=: y
-  case.   do. ide -.IDE_z_
-end.
-)
-
-and=: *.
-any=: +./
-brace=: 1 |. '}{' , ":
-brack=: 1 |. '][' , ":
-cr=: [: 5!:5 boxopen
-crr=: > , '=: ' , cr
-cuT=: <;._2
-
-default=: 0&$: :(4 : 0)
-
-
-
-
-
-
-if. 0<: 4!:0 <y do. y~ return. end.
-(y)=:x
-)
-
-diriac=: 0&$: :(4 : 0)
-
-
-
-
-
-sortd=. \:~ :\:
-if. y-:'?' do. sst how elseif. y-:'??' do. ot how end.
-if. 0=#y do. y=. '~temp/*.ijs' end.
-if. x<0 do. x {. sortd ~. 3 diriac y return. end.
-z=. {."1 (1!:0 jpath y)
-if. x-:0 do. z return. end.
-fo=. [: > [: {. DT cut ]
-z=. fo each z
-if. x-:1 do. z return. end.
-fprefix=. '*' -.~ ([: >: '/' i:~ ]) }. ] {.~ '.' i.~ ]
-
-n=. #fprefix y
-z=. n }. each z
-if. x-:2 do. z return. end.
-
-sort ~. ,> 0 ".each z -.each < a. -. '1234567890'
-)
-
-f4b=: }.@((<10{a.) ;@,. ])
-f4x=: }.@((<10{a.) ;@,. ])@([: (#~ ([: +./\. ' '&~:))&.> <"1)
-
-platform=: 3 : 0
-
-if. y-: 1 do. z=. 'IFJHS';'IFQT'
-else. z=. 'IF' nl_z_ 0
-end.
-('=:',~"1 >z),. ": vv ". ','sfy z
-)
-
-
-
-
-s=. 3 3 2$1 0 0 0 0 0 2 1 2 1 2 1 2 0 0 3 2 0
-m=. < '(' ; ')'
-smresolve=: ((0;s;m) ;: ucp)"1
-sw=: ] rplc [: , (paren&.> ,. ":&".&.>)&smresolve
-ssw=: smoutput&sw
-
-dtlf=: #~ ([: +./\. (10{a.)&~:)
-edit=: [: open [: , [: > whichscript_z_
-extx=: (0 < [: # ]) # ] , [ #~ [: -. '.' e. ]
-fname=: ([: >: '/' i:~ ]) }. ] {.~ '.' i:~ ]
-fw=: firstwords=: (' ' taketo ])"1
-ijs=: '.ijs'&extx
-isBool=: isBools *. isScalar
-isBools=: [: all 0 1 e.~ ]
-isEmpty=: 0 = [: */ $
-isScalar=: [: {. 0 = [: $ $
-tmp=: [: jpath '~temp/' , ijs@":
-lasttemp=: 3 : 'tmp >./3 diriac tmp ''*'''
-llog=: (1 { ":)@(,@([: ] ;: ,. [: ".&.> ;:))
-log=: [: ": ;: ,. [: ".&.> ;:
-max=: $:/ :>.
-min=: $:/ :<.
-o2f=: 3 : 'LF(I. y=SP)}y'
-or=: +.
-paren=: 1 |. ')(' , ":
-pc=: '%' ,~ [: ": [: <. 0.5 + 100 * 88350 %~ ]
-
-sl=: 4 : 0
-
-
-SL=. '/'
-if. SL={:x do. x=. }:x end.
-if. SL={.y do. x=. }.y end.
-x,SL,y
-)
-
-sllog=: smoutput@llog
-sortd=: \:~ :\:
-sq=: *: :[:
-sqrt=: %: :[:
-square=: *: :[:
-st=: [: 1!:1 [: < tmp
-sst=: smoutput@st
-temp=: lasttemp`tmp@.(*@#@])
-to=: [ + [: i. [: >: -~
-x2f=: }.@((<10{a.) ;@,. ])@([: (#~ ([: +./\. ' '&~:))&.> <"1)
+AABUILT=: '2019-05-25  05:42:50'
+AABUILT=: '2019-05-25  17:31:55'
 
 '==================== [tabby] constants ===================='
 
@@ -592,7 +470,7 @@ fill_tools ''
 
 '==================== [tabby] graphic ===================='
 0 :0
-Thursday 4 April 2019  09:11:06
+Saturday 25 May 2019  05:37:17
 -
 TO DO
 circle - draw it round item number
@@ -604,7 +482,7 @@ write caption
 draw arrows
 (CENTER not used)
 -
-  wd'psel tre; qform'
+  wd'psel tree; qform'
   sminfo_z_=: wdinfo_z_=: echo_z_
 -
 PTS -a list of points at which {1} {2} … drawn
@@ -616,7 +494,7 @@ Set node spacing wider to make a smallish t-table still need scrolling
 Change arrow color when hovering in its col.
 Draw orange-circle around the line number {1} {2} …
 click to change the line number itself.
-tre_hover_off -should redraw without the orange circle.
+tree_hover_off -should redraw without the orange circle.
 Click on value -superimpose a roving edit to change it.
 Allow multi selections
 Move selection OR line up/down with toolbar and arrows
@@ -625,25 +503,26 @@ Write out a pdf of screen
 )
 
 clear 'tree'
-coclass LOC=.'tree'
-clear LOC
+coclass 'tree'
 coinsert 'jgl2'
 
+PCAPT=: 150j10
 ITEMS=: 1 + i.5
 PTS=: 100j50 100j100 100j150 100j200 100j250
 
 NODEID=: 1
 NODE=: ''
+NOSELECTION=: '(nothing selected)'
 
 TREEPOS=: 1380 500 530 550
 
 TREE=: 0 : 0
-pc tre;pn T-Table Tree;
+pc tree;pn T-Table Tree;
 cc g isidraw;
 cc sbar static; cn "(status unset)";
 )
 
-window_close=: 3 : 'wd :: 0: ''psel tre; pclose;'''
+window_close=: 3 : 'wd :: 0: ''psel tree; pclose;'''
 
 start=: 3 : 0
 
@@ -669,7 +548,7 @@ putsb=: 3 : 0
 
 z=. ": ,y
 if. 70<#z do. z=. '…',~ 69{.z end.
-wd 'psel tre; set sbar text *',z
+wd 'psel tree; set sbar text *',z
 )
 
 circle=: 4 : 0
@@ -683,28 +562,28 @@ wh=. 2#DIAMETER
 radius=. <.DIAMETER%2
 glellipse (xy - radius) , wh
 )
-tre_close=: window_close
+tree_close=: window_close
 
-tre_g_mbldown=: 3 : 0
+tree_g_mbldown=: 3 : 0
 
 
-	ssw '+++ tre_g_mbldown y=(y) NODEID=(NODEID) NODE=(NODE)'
+	ssw '+++ tree_g_mbldown NODEID=(NODEID) NODE=(NODE)'
 1 redraw NODEID
 )
 
-tre_g_mblup=: 3 : 0
+tree_g_mblup=: 3 : 0
 
 NODE=: 'CLICKED',":NODEID
-	ssw '+++ tre_g_mblup y=(y) NODEID=(NODEID) NODE=(NODE)'
+	ssw '+++ tree_g_mblup NODEID=(NODEID) NODE=(NODE)'
 )
 
-tre_g_mmove=: hover
+tree_g_mmove=: hover
 
 hover=: 3 : 0
 'X Y'=: 2{.".sysdata
 PT=: X j. Y
 icp=: closest pjmouse''
-if. _=icp do. signal '(no tool selected)' return. end.
+if. _=icp do. signal NOSELECTION return. end.
 signal 2 pick icp{CNB
 redraw icp
 
@@ -714,9 +593,13 @@ wd'timer ',":TIMER_HOVER
 
 signal=: empty
 
-tre_hover_off=: 3 : 0
+signal=: 3 : 0
+if.-. y-:NOSELECTION do. smoutput 'signal:' ; y end.
+)
+
+tree_hover_off=: 3 : 0
 wd 'timer 0'
-	ssw '+++ tre_hover_off: X=(X) Y=(Y)'
+	ssw '+++ tree_hover_off: X=(X) Y=(Y)'
 )
 
 closest=: 3 : 0
@@ -753,9 +636,10 @@ i.0 0
 redraw=: 0 ddefine
 
 
-CTB=: tabengine_cal_'CTBB'
-putsb sw 'x=(x) y=(y) X=(X) Y=(Y) PT=(PT) icp=(icp) NODEID=(NODEID) NODE=(NODE)'
-wd 'psel tre'
+PTS=: 100 j. 20 + 30*ITEMS=: }.i.#>{.CTB=: tabengine_cal_'CTBB'
+ARRO=:  tabengine_cal_'ARRO'
+putsb sw 'icp=(icp) NODEID=(NODEID) NODE=(NODE) x=(x) y=(y) X=(X) Y=(Y)'
+wd 'psel tree'
 blank=. COLOR_WHITE
 spot=. x pick COLOR_HOVER ; COLOR_CLICK
 glsel 'g'
@@ -765,15 +649,22 @@ glfont sw '"(FONT)" (FONTSIZE)'
 glrgb blank
 glpen 1
 glbrush'' [glrgb spot
+capt=. tabengine_cal_'CAPT'
+names=. 6 pick CTB
+qtys=. 3 pick CTB
+gltextxy +. DISP + PCAPT
+gltext tabengine_cal_'CAPT'
 for_i. i.#PTS do.
   gltextxy +. DISP + i{PTS
   gltext brace i+1
+  gltextxy +. DISP + 50 + i{PTS
+  gltext utf8 qtys {~ i+1
+  gltextxy +. DISP + 180 + i{PTS
+  gltext names {~ i+1
 end.
 glpaint''
 )
-
-
-onload 'start_tree_ NIL'
+onload 'start_tree_ $0'
 
 '==================== [tabby] tools ===================='
 
@@ -1113,7 +1004,7 @@ assert. SP e. y=. deb y
 assert. isNumeric va=. dltb va
 assert. isunits=. 0~: {: tabengine 'CONV' ; dltb un
 qty=. tabengine 'UUUU' ; y
-smoutput llog 'calco_qty y va un isunits qty'
+sllog 'calco_qty y va un isunits qty'
 tabenginex 'vunn' ; theItem ; qty
 )
 

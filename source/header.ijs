@@ -14,3 +14,6 @@ coinsert 'jgl2'	NB. uses gl2 verbs to display the toolbar
 PARENTDIR=: (zx i:'/'){.zx=.jpathsep>(4!:4<'zx'){4!:3''[zx=.''
 onload_z_=: empty
 startonload_z_=: start_tabby_	NB. or: empty
+
+AABUILT=: '2019-05-25  05:42:50'
+AABUILT=: '2019-05-25  17:31:55'
