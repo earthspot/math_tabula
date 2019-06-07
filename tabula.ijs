@@ -17,6 +17,7 @@ startonload_z_=: start_tabby_
 
 AABUILT=: '2019-05-25  05:42:50'
 AABUILT=: '2019-05-25  17:31:55'
+AABUILT=: '2019-06-04  19:21:25'
 
 '==================== [tabby] constants ===================='
 
@@ -470,36 +471,10 @@ fill_tools ''
 
 '==================== [tabby] graphic ===================='
 0 :0
-Saturday 25 May 2019  05:37:17
--
-TO DO
-circle - draw it round item number
-animate a mouseclick
-draw a selection bar
-fetch boxed array of current t-table, plus arrows
-add scrollbar, displace the image
-write caption
-draw arrows
-(CENTER not used)
+Saturday 25 May 2019  22:42:05
 -
   wd'psel tree; qform'
   sminfo_z_=: wdinfo_z_=: echo_z_
--
-PTS -a list of points at which {1} {2} … drawn
-redraw should draw the quantities & names
-click -sets the line selection
--
-We need a scrollbar
-Set node spacing wider to make a smallish t-table still need scrolling
-Change arrow color when hovering in its col.
-Draw orange-circle around the line number {1} {2} …
-click to change the line number itself.
-tree_hover_off -should redraw without the orange circle.
-Click on value -superimpose a roving edit to change it.
-Allow multi selections
-Move selection OR line up/down with toolbar and arrows
-Allow drag'n'drop.
-Write out a pdf of screen
 )
 
 clear 'tree'
@@ -507,8 +482,9 @@ coclass 'tree'
 coinsert 'jgl2'
 
 PCAPT=: 150j10
-ITEMS=: 1 + i.5
-PTS=: 100j50 100j100 100j150 100j200 100j250
+ROWSEP=: 20
+XDISP=: 80
+YDISP=: 30
 
 NODEID=: 1
 NODE=: ''
@@ -531,10 +507,14 @@ PEN_WIDTH=: 3
 COLOR_HOVER=: 255 200 0
 COLOR_CLICK=: 255 100 0
 COLOR_WHITE=: 255 255 255
+COLOR_ARROW=: 170 170 255
 MAX_DISTANCE=: 15
 MAX_DISTANCE=: 100
-FONT=: 'Menlo'
-'FONTSIZE GCOUNT GWIDTH GDROP DIAMETER CENTER DISP'=: 14 24 20 18 36 6j12 _12j_7
+FONT=: 'menlo' [FONTSIZE=: 14
+FFONT=: '"menlo" 14'
+IFONT=: '"times" 20 italic'
+IFONT2=: '"times" 16 italic'
+'GCOUNT GWIDTH GDROP DIAMETER CENTER DISP'=: 24 20 18 36 6j12 _12j_7
 sysevent=: ''
 window_close''
 wd TREE
@@ -636,8 +616,8 @@ i.0 0
 redraw=: 0 ddefine
 
 
-PTS=: 100 j. 20 + 30*ITEMS=: }.i.#>{.CTB=: tabengine_cal_'CTBB'
-ARRO=:  tabengine_cal_'ARRO'
+ITEMS=: }.i.#>{.CTB=: tabengine_cal_'CTBB'
+PTS=: XDISP j. YDISP + ROWSEP*ITEMS
 putsb sw 'icp=(icp) NODEID=(NODEID) NODE=(NODE) x=(x) y=(y) X=(X) Y=(Y)'
 wd 'psel tree'
 blank=. COLOR_WHITE
@@ -645,16 +625,16 @@ spot=. x pick COLOR_HOVER ; COLOR_CLICK
 glsel 'g'
 glclear''
 if. icp e. ITEMS-1 do. x circle icp{PTS end.
-glfont sw '"(FONT)" (FONTSIZE)'
-glrgb blank
-glpen 1
-glbrush'' [glrgb spot
+glfont IFONT
+glpen 1 [glbrush'' [glrgb spot
 capt=. tabengine_cal_'CAPT'
 names=. 6 pick CTB
 qtys=. 3 pick CTB
-gltextxy +. DISP + PCAPT
+gltextxy +. PCAPT
 gltext tabengine_cal_'CAPT'
+
 for_i. i.#PTS do.
+  glfont FFONT
   gltextxy +. DISP + i{PTS
   gltext brace i+1
   gltextxy +. DISP + 50 + i{PTS
@@ -662,8 +642,44 @@ for_i. i.#PTS do.
   gltextxy +. DISP + 180 + i{PTS
   gltext names {~ i+1
 end.
+arrow arrx''
 glpaint''
 )
+
+arrow=: 3 : 0 "1
+
+
+'c i j'=. y
+h=. 30 * j-i
+s=. 20
+d=. _20-(c*s)
+w=. 10
+p=. d + i{0,PTS
+o=. p + w
+q=. d + j{0,PTS
+r=. q + w
+glbrush'' [ glpen 2 [glrgb COLOR_ARROW
+gllines ,+. o,p,q,r
+6 tip r
+)
+
+tip=: 4 : 0
+
+glpen 1
+glpolygon ,+. y + 0 0j1 0j_1 1j0 0j1 * x
+)
+
+arrx=: 3 : 0
+
+
+'a aa'=: tabengine_cal_'ARRO'
+w=. {:$a
+z=. -. SP= ((w$0 1)#i.w){|:a
+t=. +/(|. 1+i.#z) *"0 0 1 z
+z=. t{~ {:"1 aa
+z,. }."1 aa
+)
+
 onload 'start_tree_ $0'
 
 '==================== [tabby] tools ===================='

@@ -2,7 +2,7 @@ NB. math/tabula manifest
 
 CAPTION=: 'TABULA - scientific calculator'
 
-VERSION=: '2.1.11'
+VERSION=: '2.1.12'
 
 DEPENDS=: 0 : 0
 format/zulu
