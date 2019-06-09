@@ -27,6 +27,7 @@ start_cal_ '$$'  NB. start with SAMPLE t-table
 NB. start_tree_''  NB. open the tree window
 PNG=: TPNG sl 'tabula-toolbar.png'
 tab_open''
+setprefs''
 setpreci 3  NB. set numeric precision for value column
 setunico 1  NB. set SI conformance level for units column
 setSelection 1

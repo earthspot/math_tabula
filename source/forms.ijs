@@ -1,9 +1,11 @@
  	NB. tabby - forms.ijs
 '==================== [tabby] forms ===================='
 0 :0
-Wednesday 10 April 2019  23:48:43
+Sunday 9 June 2019  02:21:25
+-
+loadFixed PARENTDIR sl 'tpathdev.ijs'
+open PARENTDIR sl 'tabula.ijs'
 )
-
 coclass 'tabby'
 
   NB. form position,size factory setting: (may get overridden)
@@ -213,6 +215,52 @@ cc info editm;
 bin h;
 cc updin button;cn "Update";
 bin s1z;
+tabnew Prefs;
+bin h;
+cc label1 static; cn "tab VERSION: ";
+cc locat1 edit;
+cc label1a static; cn "AABUILT: ";
+cc locat1a edit;
+cc reld1 button;cn "open";
+bin z;
+bin h;
+cc label2 static; cn "cal VERSION: ";
+cc locat2 edit;
+cc label2a static; cn "AABUILT: ";
+cc locat2a edit;
+cc reld2 button;cn "open";
+bin z;
+bin h;
+cc label3 static; cn "uu VERSION: ";
+cc locat3 edit;
+cc label3a static; cn "AABUILT: ";
+cc locat3a edit;
+cc reld3 button;cn "open";
+bin z;
+bin h;
+cc labelt static; cn "TABULA PARENTDIR: ";
+cc locatt edit;
+cc reldt button;cn "tpathdev";
+bin z;
+bin h;
+cc labelu static; cn "_UU_UU PARENTDIR: ";
+cc locatu edit;
+cc reldu button;cn "tpathdev";
+bin z;
+bin h;
+cc labelc static; cn "-->UUC: ";
+cc locatc edit;
+cc chosc button;cn "::";
+cc editc button;cn "Edit";
+cc reldc button;cn "Reload";
+bin z;
+bin h;
+cc labelf static; cn "-->UUF: ";
+cc locatf edit;
+cc chosf button;cn "::";
+cc editf button;cn "Edit";
+cc reldf button;cn "Reload";
+bin z;
 tabend;
 cc sbar static; cn "(status unset)";
 bin z;
@@ -282,3 +330,46 @@ end.
 wd 'pshow'
 fill_tools ''
 )
+
+setprefs=: 3 : 0
+  NB. fill data in tab: Prefs
+  NB. locatc locatf
+wd 'psel tab; set locat1 text *',VERSION_tabby_
+wd 'psel tab; set locat2 text *',VERSION_cal_
+wd 'psel tab; set locat3 text *',VERSION_uu_
+wd 'psel tab; set locat1a text *',AABUILT_tabby_
+wd 'psel tab; set locat2a text *',AABUILT_cal_
+wd 'psel tab; set locat3a text *',AABUILT_uu_
+wd 'psel tab; set locatu text *',PARENTDIR_uu_
+wd 'psel tab; set locatt text *',PARENTDIR  NB. _tabby_
+wd 'psel tab; set locatc text *',TPUC
+wd 'psel tab; set locatf text *',TPUF
+)
+
+tab_reldc_button=: 3 : 0
+smoutput '>>>TESTONLY tab_reldc_button: reload UUC'
+)
+
+tab_reldf_button=: 3 : 0
+smoutput '>>>TESTONLY tab_reldc_button: reload UUF'
+)
+
+tab_reldt_button=: 3 : 0
+loadFixed PARENTDIR sl 'tpathdev.ijs'
+setprefs''
+smoutput tpaths''
+smoutput date''
+)
+
+tab_reldu_button=: 3 : 0
+loadFixed PARENTDIR_uu_ sl 'tpathdev.ijs'
+setprefs''
+smoutput tpaths''
+smoutput date''
+)
+
+tab_reld1_button=: 3 : 'open TPTA,''/tabula.ijs'''
+tab_reld2_button=: 3 : 'open TPCA,''/cal.ijs'''
+tab_reld3_button=: 3 : 'open TPUU,''/uu.ijs'''
+tab_editc_button=: 3 : 'open TPUC,''/uuc.ijs'''
+tab_editf_button=: 3 : 'open TPUF,''/uuf.ijs'''

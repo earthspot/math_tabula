@@ -14,8 +14,8 @@ IDE_z_=: 1  NB. can be assumed if this script is run
 
 cocurrent 'base'
 
-]BUILTFILE_z_=: 1!:1 <jpath GIT,'/builtfile'
-]TESTFILE_z_=: GIT,'/test/test.ijs'
+BUILTFILE_z_=: GIT,'/tabula.ijs'
+TESTFILE_z_=: GIT,'/test/test.ijs'
 
 NB. ---------------------------------------------------------
 

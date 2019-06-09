@@ -1,6 +1,6 @@
 NB. math_tabula repo - build
 0 :0
-Monday 15 April 2019  04:41:32
+Sunday 9 June 2019  02:13:41
 -
 open BUILTFILE
 )
@@ -18,7 +18,7 @@ date_z_=: 6!:0 bind 'YYYY-MM-DD  hh:mm:ss'
 
 NOW=: date''
 HEADERFILE_z_=: GIT,'/source/header.ijs'
-BUILTFILE_z_=: 1!:1 <jpath GIT,'/builtfile'
+BUILTFILE_z_=: GIT,'/tabula.ijs'
 
 RB=: ')'
 
